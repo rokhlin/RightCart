@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.KodeinContext
 import org.kodein.di.generic.instance
@@ -30,7 +31,10 @@ class MainActivity : AppCompatActivity(),KodeinAware, LifecycleOwner {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                //TODO Add behaviour
+                replaceFragment(
+                    ImportDataFragment.newInstance(),
+                    R.id.frameLayout
+                )
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -41,6 +45,7 @@ class MainActivity : AppCompatActivity(),KodeinAware, LifecycleOwner {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         if (savedInstanceState == null) {
             addFragment(
                 ListFragment.newInstance(),

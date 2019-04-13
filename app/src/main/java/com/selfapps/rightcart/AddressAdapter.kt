@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.selfapps.rightcart.model.Address
 import kotlinx.android.synthetic.main.detailed_item.view.*
 
-class AddressAdapter(val ctx: Context): RecyclerView.Adapter<AddressAdapter.Holder>() {
+class AddressAdapter(private val ctx: Context) : RecyclerView.Adapter<AddressAdapter.Holder>() {
 
     private var addresses: List<Address>? = null
 
@@ -19,22 +19,26 @@ class AddressAdapter(val ctx: Context): RecyclerView.Adapter<AddressAdapter.Hold
 
     fun setData(newAddresses: List<Address>){
         addresses = newAddresses
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = addresses?.size ?: 0
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.cart.text = this.addresses?.get(position)?.cart ?: ""
-        holder.zip.text = this.addresses?.get(position)?.zip.toString()
+        val zip = this.addresses?.get(position)?.zip.toString()
+
+        holder.zip.text = if (zip == "0") "" else zip
         holder.city.text = this.addresses?.get(position)?.city ?: ""
         holder.street.text = this.addresses?.get(position)?.street ?: ""
-        holder.streetTranslit.text = this.addresses?.get(position)?.streetTranslit.toString()
+        val translit = this.addresses?.get(position)?.streetTranslit.toString()
+        holder.streetTranslit.text = if (translit == "[]") "" else translit
         holder.id.text = this.addresses?.get(position)?.id.toString()
     }
 
 
     class Holder(val view: View): RecyclerView.ViewHolder(view) {
-            val id = view.tv_id
+        val id = view.tv_id
             val zip = view.tv_zip
             val cart = view.tv_cart
             val city = view.tv_city

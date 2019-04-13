@@ -21,5 +21,6 @@ class CartApp: Application(), KodeinAware {
         bind<AddressesDao>() with singleton { instance<AppDatabase>().dao() }
 
         bind() from provider {(CartViewModelFactory(instance()))} //Using ViewModel provider we can instantiate ViewModelFactory using itself from Activity
+        bind() from provider { (ImportDataViewModel(instance())) }
     }
 }

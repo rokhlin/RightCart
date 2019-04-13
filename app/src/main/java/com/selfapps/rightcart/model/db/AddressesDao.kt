@@ -16,7 +16,7 @@ interface AddressesDao {
 //    @Insert(onConflict = OnConflictStrategy.IGNORE)
 //    fun insertStreetTranslit(vararg streets: StreetTranslit)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAddress(vararg addresses: Address)
 
 //    @Update
@@ -46,11 +46,19 @@ interface AddressesDao {
 //    @Query("SELECT * FROM streets")
 //    fun loadAllStreets(): Array<StreetTranslit>
 
-
+    //COLLATE NOCASE
     @Query("SELECT * FROM addresses WHERE city LIKE :search " +
             "OR city_translit LIKE :search "+
-            "OR street_translit LIKE :search" )
+            "OR street_translit LIKE :search " +
+            "OR street LIKE :search"
+    )
     fun findAddress(search: String): LiveData<List<Address>>
+
+    @Query(
+        "SELECT * FROM addresses WHERE city LIKE :search " +
+                "OR street LIKE :search"
+    )
+    fun findByCityStreet(search: String): List<Address>
 
 //    @Query("SELECT * FROM cities WHERE key_id LIKE :search" )
 //    fun findCities(search: String): LiveData<List<CityTranslit>>
