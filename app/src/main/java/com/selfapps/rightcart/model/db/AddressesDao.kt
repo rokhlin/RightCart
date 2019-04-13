@@ -22,6 +22,9 @@ interface AddressesDao {
     @Query("SELECT * FROM addresses")
     fun loadAllAddresses(): LiveData<List<Address>>
 
+    @Query("SELECT * FROM addresses")
+    fun exportAddresses(): List<Address>
+
     //COLLATE NOCASE
     @Query("SELECT * FROM addresses WHERE city LIKE :search " +
             "OR city_translit LIKE :search "+

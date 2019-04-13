@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.selfapps.rightcart.R
 import com.selfapps.rightcart.UI.CartViewModelFactory
 import kotlinx.android.synthetic.main.import_data_fragment.*
 import org.kodein.di.KodeinAware
@@ -30,13 +29,12 @@ class ImportDataFragment : Fragment(), KodeinAware {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.import_data_fragment, container, false)
+        return inflater.inflate(com.selfapps.rightcart.R.layout.import_data_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ImportDataViewModel::class.java)
-        // TODO: Use the ViewModel
 
         btn_import.setOnClickListener {
             val intent = Intent()
@@ -45,7 +43,14 @@ class ImportDataFragment : Fragment(), KodeinAware {
 
             startActivityForResult(Intent.createChooser(intent, "Select a file"), 111)
         }
+
+
+        btn_export.setOnClickListener {
+            viewModel.exportFromDb(this@ImportDataFragment.context!!)
+        }
     }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
