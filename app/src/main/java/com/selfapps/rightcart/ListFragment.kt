@@ -39,10 +39,6 @@ class ListFragment : Fragment(), KodeinAware {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
-
-
-
         searchQuery.postValue("")
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(AppViewModel::class.java)
 
@@ -68,21 +64,8 @@ class ListFragment : Fragment(), KodeinAware {
                 before: Int, count: Int
             ) {
                 val query = aet_search_city.text.toString().trim()
-
-
                 searchQuery.postValue(query)
 
-//
-//
-//
-//                if(query=="") viewModel.loadAddresses().observe(this@ListFragment,
-//                    Observer {
-//                        adapter.setData(it) })
-//
-//                else if(query.length >= 2)
-//                    viewModel.findAdresses(query).observe(this@ListFragment,
-//                        Observer {
-//                            adapter.setData(it) })
             }
         })
 
@@ -101,24 +84,8 @@ class ListFragment : Fragment(), KodeinAware {
 
         searchQuery.postValue("")
 
-//        viewModel.loadAddresses()
-//
-//        viewModel.getAddresses().observe(this@ListFragment, Observer {
-//            adapter.setData(it)
-//        })
-
-
         btn_clear_search.setOnClickListener {
-            val query = aet_search_city.text.toString().trim()
-
-            if (query == "") viewModel.loadAddresses()
-            else if (query.length >= 2) viewModel.findAdresses(query).observe(this@ListFragment, Observer {
-                adapter.setData(it)
-            })
-
-
-            //aet_search_city.text.clear()
-            //viewModel.loadAddresses()
+            aet_search_city.setText("")
         }
 
 
