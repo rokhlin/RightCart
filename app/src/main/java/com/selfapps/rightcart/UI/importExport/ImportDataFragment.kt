@@ -1,4 +1,4 @@
-package com.selfapps.rightcart
+package com.selfapps.rightcart.UI.importExport
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.selfapps.rightcart.R
+import com.selfapps.rightcart.UI.CartViewModelFactory
 import kotlinx.android.synthetic.main.import_data_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein

@@ -2,6 +2,8 @@ package com.selfapps.rightcart
 
 import android.app.Application
 import androidx.room.Room
+import com.selfapps.rightcart.UI.CartViewModelFactory
+import com.selfapps.rightcart.UI.importExport.ImportDataViewModel
 import com.selfapps.rightcart.model.db.AddressesDao
 import com.selfapps.rightcart.model.db.AppDatabase
 import org.kodein.di.Kodein

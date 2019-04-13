@@ -1,4 +1,4 @@
-package com.selfapps.rightcart
+package com.selfapps.rightcart.UI.searchList
 
 import android.os.Bundle
 import android.text.Editable
@@ -11,6 +11,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.selfapps.rightcart.R
+import com.selfapps.rightcart.UI.CartViewModelFactory
+import com.selfapps.rightcart.model.AddressAdapter
 import kotlinx.android.synthetic.main.main_view.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein

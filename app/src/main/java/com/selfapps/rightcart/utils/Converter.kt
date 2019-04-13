@@ -1,4 +1,4 @@
-package com.selfapps.rightcart.model
+package com.selfapps.rightcart.utils
 
 import android.util.Log
 import androidx.room.TypeConverter

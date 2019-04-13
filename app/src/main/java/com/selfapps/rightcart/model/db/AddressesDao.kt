@@ -3,7 +3,7 @@ package com.selfapps.rightcart.model.db
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.selfapps.rightcart.model.Address
-import com.selfapps.rightcart.model.Converter
+import com.selfapps.rightcart.utils.Converter
 
 
 @Dao

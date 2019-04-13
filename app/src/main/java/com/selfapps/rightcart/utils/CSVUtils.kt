@@ -1,4 +1,4 @@
-package com.selfapps.rightcart
+package com.selfapps.rightcart.utils
 
 import android.net.Uri
 import android.util.Log

@@ -1,4 +1,4 @@
-package com.selfapps.rightcart
+package com.selfapps.rightcart.UI
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*

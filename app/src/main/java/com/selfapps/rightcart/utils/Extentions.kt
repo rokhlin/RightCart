@@ -1,9 +1,10 @@
-package com.selfapps.rightcart
+package com.selfapps.rightcart.utils
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.selfapps.rightcart.UI.MainActivity
 
 
 inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {

@@ -1,11 +1,11 @@
-package com.selfapps.rightcart
+package com.selfapps.rightcart.model
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.selfapps.rightcart.model.Address
+import com.selfapps.rightcart.R
 import kotlinx.android.synthetic.main.detailed_item.view.*
 
 class AddressAdapter(private val ctx: Context) : RecyclerView.Adapter<AddressAdapter.Holder>() {
@@ -13,8 +13,14 @@ class AddressAdapter(private val ctx: Context) : RecyclerView.Adapter<AddressAda
     private var addresses: List<Address>? = null
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder{
-       return Holder(LayoutInflater.from(ctx).inflate(R.layout.detailed_item, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        return Holder(
+            LayoutInflater.from(ctx).inflate(
+                R.layout.detailed_item,
+                parent,
+                false
+            )
+        )
     }
 
     fun setData(newAddresses: List<Address>){
