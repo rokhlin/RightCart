@@ -3,6 +3,7 @@ package com.selfapps.rightcart
 import android.app.Application
 import androidx.room.Room
 import com.selfapps.rightcart.UI.CartViewModelFactory
+import com.selfapps.rightcart.UI.ChangeAddressVievModel
 import com.selfapps.rightcart.UI.importExport.ImportDataViewModel
 import com.selfapps.rightcart.model.db.AddressesDao
 import com.selfapps.rightcart.model.db.AppDatabase
@@ -24,5 +25,6 @@ class CartApp: Application(), KodeinAware {
 
         bind() from provider {(CartViewModelFactory(instance()))} //Using ViewModel provider we can instantiate ViewModelFactory using itself from Activity
         bind() from provider { (ImportDataViewModel(instance())) }
+        bind() from provider { (ChangeAddressVievModel(instance())) }
     }
 }

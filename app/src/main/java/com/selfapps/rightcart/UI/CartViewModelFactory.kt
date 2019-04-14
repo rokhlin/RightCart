@@ -17,8 +17,10 @@ class CartViewModelFactory(private val dao: AddressesDao): ViewModelProvider.New
             ) as T
             ImportDataViewModel::class.java.canonicalName -> ImportDataViewModel(
                 dao
-            ) as T //TODO: ADD GROUPS REPOSITORY
-
+            ) as T
+            ChangeAddressVievModel::class.java.canonicalName -> ChangeAddressVievModel(
+                dao
+            ) as T
             else -> throw ClassCastException("wrong ViewModel class")
         }
     }

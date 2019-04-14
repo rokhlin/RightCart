@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" android:layout_marginTop="96dp">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true" app:srcCompat="@drawable/ic_check_black_24dp"
+            android:id="@+id/fab" android:layout_margin="32dp" android:layout_gravity="bottom|end"/>
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -17,40 +22,40 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
-                        android:text="cartID"
+                        android:hint="cartID"
                         android:ems="10"
                         android:id="@+id/et_cart" android:layout_weight="1"/>
                 <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
-                        android:text="ZIP"
+                        android:hint="ZIP"
                         android:ems="10"
                         android:id="@+id/et_zip" android:layout_weight="1"/>
             </LinearLayout>
             <AutoCompleteTextView
-                    android:text="City"
+                    android:hint="City"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/aet_city"/>
             <MultiAutoCompleteTextView
-                    android:text="City Translit"
+                    android:hint="City Translit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/met_city_translit"/>
             <AutoCompleteTextView
-                    android:text="Street"
+                    android:hint="Street"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/aet_street"/>
             <MultiAutoCompleteTextView
-                    android:text="Street Translit"
+                    android:hint="Street Translit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/met_street_translit"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="Notes"
+                    android:hint="Notes"
                     android:ems="10"
                     android:id="@+id/et_notes"/>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</FrameLayout>

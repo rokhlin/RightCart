@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity(),KodeinAware, LifecycleOwner {
                 )
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
-                //TODO Add behaviour
-                return@OnNavigationItemSelectedListener true
-            }
+//            R.id.navigation_dashboard -> {
+//                //TODO Add behaviour
+//                return@OnNavigationItemSelectedListener true
+//            }
             R.id.navigation_notifications -> {
                 replaceFragment(
                     ImportDataFragment.newInstance(),

@@ -38,4 +38,8 @@ interface AddressesDao {
                 "OR street LIKE :search"
     )
     fun findByCityStreet(search: String): List<Address>
+
+
+    @Query("SELECT * FROM addresses WHERE id LIKE :id")
+    fun findAddress(id: Long): Address
 }
