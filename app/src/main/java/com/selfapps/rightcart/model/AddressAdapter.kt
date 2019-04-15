@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.selfapps.rightcart.R
 import com.selfapps.rightcart.UI.ChangeActivity
+import com.selfapps.rightcart.utils.Converter.Companion.TRANSLIT_STRING_SEPARATOR
+import com.selfapps.rightcart.utils.Converter.Companion.stringFromSets
 import kotlinx.android.synthetic.main.detailed_item.view.*
 
 
@@ -46,9 +48,19 @@ class AddressAdapter(private val ctx: Context) : RecyclerView.Adapter<AddressAda
         holder.zip.text = if (zip == "0") "" else zip
         holder.city.text = this.addresses?.get(position)?.city ?: ""
         holder.street.text = this.addresses?.get(position)?.street ?: ""
-        val translit = this.addresses?.get(position)?.streetTranslit.toString()
+
+        val translit = getTranslitString(this.addresses?.get(position)!!)
+        // val translit = this.addresses?.get(position)?.streetTranslit.toString()
         holder.streetTranslit.text = if (translit == "[]") "" else translit
+
         holder.id.text = this.addresses?.get(position)?.id.toString()
+    }
+
+    private fun getTranslitString(address: Address): String {
+        return stringFromSets(address.cityTranslit, TRANSLIT_STRING_SEPARATOR) + stringFromSets(
+            address.streetTranslit,
+            TRANSLIT_STRING_SEPARATOR
+        )
     }
 
 

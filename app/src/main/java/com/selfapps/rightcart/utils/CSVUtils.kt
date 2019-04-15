@@ -9,12 +9,12 @@ import java.io.FileWriter
 
 
 object CSVUtils {
-    fun readFileAsLinesUsingReadLines(fileName: String): List<String> = File(fileName).readLines()
+    private fun readFileAsLines(fileName: String): List<String> = File(fileName).readLines()
 
     fun csvToAddresses(fileName: Uri?): List<Address> {
         if (fileName == null) return emptyList()
 
-        val list = readFileAsLinesUsingReadLines(fileName.encodedPath)
+        val list = readFileAsLines(fileName.encodedPath)
         val result = mutableListOf<Address>()
         list.forEach {
             if (!it.contains("cart;zip")) {

@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 import com.selfapps.rightcart.R
 import com.selfapps.rightcart.model.Address
+import com.selfapps.rightcart.utils.Converter
 import kotlinx.android.synthetic.main.change_item.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
@@ -33,6 +35,7 @@ class ChangeFragment(val id: Long) : Fragment(), KodeinAware {
         return inflater.inflate(R.layout.change_item, container, false)
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ChangeAddressVievModel::class.java)
@@ -46,8 +49,13 @@ class ChangeFragment(val id: Long) : Fragment(), KodeinAware {
         aet_city.setText(address.city)
         et_notes.setText(address.notes)
 
-        met_city_translit.setText(getStringLine(address.cityTranslit))
-        met_street_translit.setText(getStringLine(address.cityTranslit))
+        met_city_translit.setText(Converter.stringFromSets(address.cityTranslit, Converter.TRANSLIT_STRING_SEPARATOR))
+        met_street_translit.setText(
+            Converter.stringFromSets(
+                address.streetTranslit,
+                Converter.TRANSLIT_STRING_SEPARATOR
+            )
+        )
 
 
         fab.setOnClickListener { view ->
@@ -59,34 +67,18 @@ class ChangeFragment(val id: Long) : Fragment(), KodeinAware {
                 notes = et_notes.text.toString().trim()
             )
 
-            newAddress.cityTranslit = getSetFromStr(met_city_translit.text.toString())
-            newAddress.streetTranslit = getSetFromStr(met_street_translit.text.toString())
+            newAddress.cityTranslit = Converter.setFromString(
+                met_city_translit.text.toString(),
+                Converter.TRANSLIT_STRING_SEPARATOR
+            )
+            newAddress.streetTranslit = Converter.setFromString(
+                met_street_translit.text.toString(),
+                Converter.TRANSLIT_STRING_SEPARATOR
+            )
             newAddress.id = address.id
 
             viewModel.addAddress(newAddress)
+            Snackbar.make(this@ChangeFragment.view!!, "Item updated.", Snackbar.LENGTH_SHORT).show()
         }
     }
-
-    private fun getSetFromStr(string: String): Set<String> {
-        val arr = string.split(" ")
-        val res = HashSet<String>()
-        arr.forEach {
-            if (it.length > 0) res.add(it)
-        }
-        return res
-    }
-
-    private fun getStringLine(set: Set<String>): String {
-        val res = StringBuilder()
-
-        if (set.isEmpty()) return ""
-        if (set.size == 1 && set.contains("")) return ""
-
-        set.forEach {
-            res.append(it)
-            res.append(" ")
-        }
-        return res.toString()
-    }
-
 }

@@ -40,7 +40,7 @@ class Converter {
             json.beginArray()
 
             for (s in strings) {
-                json.value(s)
+                json.value(s.toUpperCase())
             }
 
             json.endArray()
@@ -76,4 +76,32 @@ class Converter {
 
         return result
     }
+
+
+    companion object {
+        const val TRANSLIT_STRING_SEPARATOR = ", "
+
+        fun setFromString(string: String, separator: String): Set<String> {
+            val arr = string.split(separator)
+            val res = HashSet<String>()
+            arr.forEach {
+                if (it.isNotEmpty()) res.add(it.toUpperCase())
+            }
+            return res
+        }
+
+        fun stringFromSets(set: Set<String>, separator: String): String {
+            val res = StringBuilder()
+
+            if (set.isEmpty()) return ""
+            if (set.size == 1 && set.contains("")) return ""
+
+            set.forEach {
+                res.append(it)
+                res.append(separator)
+            }
+            return res.toString()
+        }
+    }
+
 }
